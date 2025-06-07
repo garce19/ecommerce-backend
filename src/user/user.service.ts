@@ -35,6 +35,9 @@ export class UserService {
         if (!persistedUser) {
             throw new BusinessLogicException("The user with the given id was not found", BusinessError.NOT_FOUND);
         }
+
+        persistedUser.id = id;
+        
         return await this.userRepository.save({ ...persistedUser, ...user });
     }
 
