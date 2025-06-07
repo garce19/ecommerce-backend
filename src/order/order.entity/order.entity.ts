@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserEntity } from "src/user/user.entity/user.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class OrderEntity {
@@ -10,4 +11,10 @@ export class OrderEntity {
 
     @Column()
     date: Date;
+
+    @ManyToOne(() => UserEntity, seller => seller.sellerOrders)
+    seller: UserEntity;
+
+    @ManyToOne(() => UserEntity, buyer => buyer.buyerOrders)
+    buyer: UserEntity;
 }
