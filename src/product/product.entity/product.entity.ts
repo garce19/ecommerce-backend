@@ -1,5 +1,6 @@
 import { Category } from "src/shared/enums";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserEntity } from "src/user/user.entity/user.entity";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ProductEntity {
@@ -20,4 +21,7 @@ export class ProductEntity {
 
     @Column()
     category: Category;
+
+    @ManyToOne(() => UserEntity, seller => seller.products)
+    seller: UserEntity;
 }

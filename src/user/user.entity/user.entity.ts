@@ -1,4 +1,5 @@
 import { OrderEntity } from "src/order/order.entity/order.entity";
+import { ProductEntity } from "src/product/product.entity/product.entity";
 import { UserType } from "src/shared/enums";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
@@ -39,4 +40,7 @@ export class UserEntity {
 
     @OneToMany(() => OrderEntity, order => order.buyer)
     buyerOrders: OrderEntity[];
+
+    @OneToMany(() => ProductEntity, product => product.seller)
+    products: ProductEntity[];
 }
