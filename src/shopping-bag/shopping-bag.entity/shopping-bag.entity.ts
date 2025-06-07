@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { UserEntity } from "src/user/user.entity/user.entity";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ShoppingBagEntity {
@@ -16,4 +17,7 @@ export class ShoppingBagEntity {
 
     @Column()
     updatedAt: Date;
+
+    @OneToOne(() => UserEntity, user => user.shoppingBag)
+    user: UserEntity;
 }

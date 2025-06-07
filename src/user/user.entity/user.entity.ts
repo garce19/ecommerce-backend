@@ -1,7 +1,8 @@
 import { OrderEntity } from "src/order/order.entity/order.entity";
 import { ProductEntity } from "src/product/product.entity/product.entity";
 import { UserType } from "src/shared/enums";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ShoppingBagEntity } from "src/shopping-bag/shopping-bag.entity/shopping-bag.entity";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class UserEntity {
@@ -43,4 +44,8 @@ export class UserEntity {
 
     @OneToMany(() => ProductEntity, product => product.seller)
     products: ProductEntity[];
+
+    @OneToOne(() => ShoppingBagEntity, shoppingBag => shoppingBag.user)
+    @JoinColumn()
+    shoppingBag: ShoppingBagEntity;
 }
