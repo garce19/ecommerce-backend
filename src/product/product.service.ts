@@ -44,6 +44,9 @@ export class ProductService {
         if (!persistedProduct) {
             throw new BusinessLogicException("The product with the given id was not found", BusinessError.NOT_FOUND);
         }
+
+        persistedProduct.id = id;
+
         return await this.productRepository.save({ ...persistedProduct, ...product });
     }
 
