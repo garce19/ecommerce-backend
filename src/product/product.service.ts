@@ -12,7 +12,7 @@ export class ProductService {
     ) { }
 
     async findAll(): Promise<ProductEntity[]> {
-        return this.productRepository.find({ relations: ['seller', 'orders', 'shoppingBags'] });
+        return await this.productRepository.find({ relations: ['seller', 'orders', 'shoppingBags'] });
     }
 
     async findOne(id: string): Promise<ProductEntity> {
@@ -36,7 +36,7 @@ export class ProductService {
             throw new BusinessLogicException("The product quantity cannot be negative", BusinessError.PRECONDITION_FAILED);
         }
 
-        return this.productRepository.save(product);
+        return await this.productRepository.save(product);
     }
 
     async update(id: string, product: ProductEntity): Promise<ProductEntity> {
@@ -44,7 +44,7 @@ export class ProductService {
         if (!persistedProduct) {
             throw new BusinessLogicException("The product with the given id was not found", BusinessError.NOT_FOUND);
         }
-        return this.productRepository.save({ ...persistedProduct, ...product });
+        return await this.productRepository.save({ ...persistedProduct, ...product });
     }
 
     async delete(id: string) {
