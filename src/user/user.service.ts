@@ -9,14 +9,14 @@ export class UserService {
     constructor(
         @InjectRepository(UserEntity)
         private readonly userRepository: Repository<UserEntity>,
-    ) {}
+    ) { }
 
     async findAll(): Promise<UserEntity[]> {
         return await this.userRepository.find({ relations: ['sellerOrders', 'buyerOrders', 'products', 'shoppingBag'] });
     }
 
     async findOne(id: string): Promise<UserEntity> {
-        const user = await this.userRepository.findOne({ where: {id}, relations: ['sellerOrders', 'buyerOrders', 'products', 'shoppingBag'] });
+        const user = await this.userRepository.findOne({ where: { id }, relations: ['sellerOrders', 'buyerOrders', 'products', 'shoppingBag'] });
         if (!user)
             throw new BusinessLogicException("The user with the given id was not found", BusinessError.NOT_FOUND);
         return user;
@@ -35,7 +35,7 @@ export class UserService {
         if (!persistedUser) {
             throw new BusinessLogicException("The user with the given id was not found", BusinessError.NOT_FOUND);
         }
-        return await this.userRepository.save({ ...persistedUser, ...user }); 
+        return await this.userRepository.save({ ...persistedUser, ...user });
     }
 
     async delete(id: string) {
