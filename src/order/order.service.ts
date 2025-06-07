@@ -12,7 +12,7 @@ export class OrderService {
     ) { }
 
     async findAll(): Promise<OrderEntity[]> {
-        return this.orderRepository.find({ relations: ['seller', 'buyer', 'products'] });
+        return await this.orderRepository.find({ relations: ['seller', 'buyer', 'products'] });
     }
 
     async findOne(id: string): Promise<OrderEntity> {
