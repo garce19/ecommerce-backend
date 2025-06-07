@@ -44,6 +44,8 @@ export class OrderService {
         if (!persistedOrder)
             throw new BusinessLogicException("The order with the given id was not found", BusinessError.NOT_FOUND);
 
+        persistedOrder.id = id;
+
         return await this.orderRepository.save({ ...persistedOrder, ...order });
     }
 
