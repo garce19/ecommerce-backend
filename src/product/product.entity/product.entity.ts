@@ -1,6 +1,7 @@
 import { Category } from "src/shared/enums";
+import { ShoppingBagEntity } from "src/shopping-bag/shopping-bag.entity/shopping-bag.entity";
 import { UserEntity } from "src/user/user.entity/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class ProductEntity {
@@ -24,4 +25,7 @@ export class ProductEntity {
 
     @ManyToOne(() => UserEntity, seller => seller.products)
     seller: UserEntity;
+
+    @ManyToMany(() => ShoppingBagEntity, shoppingBag => shoppingBag.shoppingBagItems)
+    shoppingBags: ShoppingBagEntity[];
 }
