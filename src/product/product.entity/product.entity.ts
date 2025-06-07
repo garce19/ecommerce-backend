@@ -1,3 +1,4 @@
+import { OrderEntity } from "src/order/order.entity/order.entity";
 import { Category } from "src/shared/enums";
 import { ShoppingBagEntity } from "src/shopping-bag/shopping-bag.entity/shopping-bag.entity";
 import { UserEntity } from "src/user/user.entity/user.entity";
@@ -28,4 +29,7 @@ export class ProductEntity {
 
     @ManyToMany(() => ShoppingBagEntity, shoppingBag => shoppingBag.shoppingBagItems)
     shoppingBags: ShoppingBagEntity[];
+
+    @ManyToMany(() => OrderEntity, order => order.products)
+    orders: OrderEntity[];
 }

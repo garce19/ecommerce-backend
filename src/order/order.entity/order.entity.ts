@@ -1,5 +1,6 @@
+import { ProductEntity } from "src/product/product.entity/product.entity";
 import { UserEntity } from "src/user/user.entity/user.entity";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class OrderEntity {
@@ -17,4 +18,8 @@ export class OrderEntity {
 
     @ManyToOne(() => UserEntity, buyer => buyer.buyerOrders)
     buyer: UserEntity;
+
+    @ManyToMany(() => ProductEntity, product => product.orders)
+    @JoinTable()
+    products: ProductEntity[];
 }
