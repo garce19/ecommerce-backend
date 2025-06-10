@@ -1,7 +1,7 @@
-import { OrderEntity } from "src/order/order.entity/order.entity";
-import { Category } from "src/shared/enums";
-import { ShoppingBagEntity } from "src/shopping-bag/shopping-bag.entity/shopping-bag.entity";
-import { UserEntity } from "src/user/user.entity/user.entity";
+import { OrderEntity } from "../../order/order.entity/order.entity";
+import { Category } from "../../shared/enums";
+import { ShoppingBagEntity } from "../../shopping-bag/shopping-bag.entity/shopping-bag.entity";
+import { UserEntity } from "../../user/user.entity/user.entity";
 import { Column, Entity, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
