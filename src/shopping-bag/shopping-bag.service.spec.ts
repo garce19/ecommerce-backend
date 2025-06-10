@@ -3,6 +3,7 @@ import { ShoppingBagService } from './shopping-bag.service';
 import { ShoppingBagEntity } from './shopping-bag.entity/shopping-bag.entity';
 import { Repository } from 'typeorm';
 import { getRepositoryToken } from '@nestjs/typeorm';
+import { TypeOrmTestingConfig } from '../shared/testing-utils/typeorm-testing-config';
 
 describe('ShoppingBagService', () => {
   let service: ShoppingBagService;
@@ -10,6 +11,7 @@ describe('ShoppingBagService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
+      imports: [...TypeOrmTestingConfig()],
       providers: [ShoppingBagService],
     }).compile();
 
