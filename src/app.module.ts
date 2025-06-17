@@ -10,6 +10,7 @@ import { UserEntity } from './user/user.entity/user.entity';
 import { OrderEntity } from './order/order.entity/order.entity';
 import { ProductEntity } from './product/product.entity/product.entity';
 import { ShoppingBagEntity } from './shopping-bag/shopping-bag.entity/shopping-bag.entity';
+import { OrderUserModule } from './order-user/order-user.module';
 
 @Module({
   imports: [UserModule, OrderModule, ProductModule, ShoppingBagModule,
@@ -24,6 +25,7 @@ import { ShoppingBagEntity } from './shopping-bag/shopping-bag.entity/shopping-b
       dropSchema: true,
       synchronize: true,
     }),
+    OrderUserModule,
   ],
   controllers: [AppController],
   providers: [AppService],
