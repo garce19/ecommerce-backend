@@ -13,6 +13,7 @@ import { ShoppingBagEntity } from './shopping-bag/shopping-bag.entity/shopping-b
 import { UserShoppingBagModule } from './user-shopping-bag/user-shopping-bag.module';
 import { UserOrderModule } from './user-order/user-order.module';
 import { UserProductModule } from './user-product/user-product.module';
+import { ShoppingBagProductModule } from './shopping-bag-product/shopping-bag-product.module';
 
 @Module({
   imports: [UserModule, OrderModule, ProductModule, ShoppingBagModule,
@@ -30,6 +31,7 @@ import { UserProductModule } from './user-product/user-product.module';
     UserShoppingBagModule,
     UserOrderModule,
     UserProductModule,
+    ShoppingBagProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
