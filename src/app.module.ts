@@ -14,6 +14,7 @@ import { UserShoppingBagModule } from './user-shopping-bag/user-shopping-bag.mod
 import { UserOrderModule } from './user-order/user-order.module';
 import { UserProductModule } from './user-product/user-product.module';
 import { ShoppingBagProductModule } from './shopping-bag-product/shopping-bag-product.module';
+import { ProductOrderModule } from './product-order/product-order.module';
 
 @Module({
   imports: [UserModule, OrderModule, ProductModule, ShoppingBagModule,
@@ -32,6 +33,7 @@ import { ShoppingBagProductModule } from './shopping-bag-product/shopping-bag-pr
     UserOrderModule,
     UserProductModule,
     ShoppingBagProductModule,
+    ProductOrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
