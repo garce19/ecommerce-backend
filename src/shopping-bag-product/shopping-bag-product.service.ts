@@ -68,6 +68,29 @@ export class ShoppingBagProductService {
         return shoppingBag.shoppingBagItems;
     }
 
+    async associateProductsToShoppingBag(shoppingBagId: string, products: ProductEntity[]): Promise<ShoppingBagEntity> {
+        const shoppingBag: ShoppingBagEntity = await this.shoppingBagRepository.findOne({
+            where: { id: shoppingBagId },
+            relations: ['shoppingBagItems'],
+        });
+
+        if (!shoppingBag)
+            throw new BusinessLogicException("The shopping bag with the given id was not found", BusinessError.NOT_FOUND);
+
+        for (let i = 0; i < products.length; i++) {
+            const product: ProductEntity = await this.productRepository.findOne({
+                where: { id: products[i].id },
+            });
+
+            if (!product)
+                throw new BusinessLogicException("The product with the given id was not found", BusinessError.NOT_FOUND);
+
+            shoppingBag.shoppingBagItems = products
+            return await this.shoppingBagRepository.save(shoppingBag);
+        }
+    
+    }
+
     async deleteProductFromShoppingBag(shoppingBagId: string, productId: string): Promise<void> {
         const shoppingBag: ShoppingBagEntity = await this.shoppingBagRepository.findOne({
             where: { id: shoppingBagId },
